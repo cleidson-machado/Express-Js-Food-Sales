@@ -4,7 +4,7 @@ const pizzaSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      unique: true,
+      unique: false,
       uppercase: true,
       required: [true, "The Name is Mandatory!"],
     },
@@ -18,7 +18,7 @@ const pizzaSchema = new mongoose.Schema(
       type: Number,
       min: 1,
       max: 1000,
-      required: [true, "The Name is Mandatory!"],
+      required: [true, "The Price is Mandatory!"],
     },
     averageWeight: {
       type: Number,

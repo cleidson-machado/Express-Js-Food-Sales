@@ -45,9 +45,15 @@ const userSchema = new mongoose.Schema(
     },
     levelAccess: {
       type: [String],
+      enum: [
+        "USER-Level",
+        "ROOT-Level",
+        "ADMIN-Level",
+        "GUEST-Level",
+        "BUYER-Level",
+      ],
       default: "USER-Level",
-      enum: ["ROOT-Level", "ADMIN-Level", "GUEST-Level"],
-      required: [false], // change to ENUN'S!??
+      required: [false],
     },
   },
   {

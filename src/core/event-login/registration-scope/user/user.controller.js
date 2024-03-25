@@ -1,9 +1,9 @@
-const pizzaService = require("./pizza.services");
+const userService = require("./user.services");
 
 //METHOD findAll ------------------------------------------------ TODO!
 async function findAll(req, res) {
   try {
-    return res.status(200).json(await pizzaService.findAll());
+    return res.status(200).json(await userService.findAll());
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
@@ -13,7 +13,7 @@ async function findAll(req, res) {
 //METHOD findById ----------------------------------------------- TODO!
 async function findById(req, res) {
   try {
-    return res.status(200).json(await pizzaService.findById(req.params.id));
+    return res.status(200).json(await userService.findById(req.params.id));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
@@ -23,10 +23,10 @@ async function findById(req, res) {
 //METHOD createOne ---------------------------------------------- TODO!
 async function createOne(req, res) {
   try {
-    const pizzaData = {
+    const userData = {
       ...req.body,
     };
-    return res.status(200).json(await pizzaService.create(pizzaData));
+    return res.status(200).json(await userService.create(userData));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
@@ -36,12 +36,12 @@ async function createOne(req, res) {
 //METHOD updateOne ---------------------------------------------- TODO!
 async function updateOne(req, res) {
   try {
-    const pizzaData = {
+    const userData = {
       ...req.body,
     };
     return res
       .status(200)
-      .json(await pizzaService.updateById(req.params.id, pizzaData));
+      .json(await userService.updateById(req.params.id, userData));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
@@ -51,7 +51,7 @@ async function updateOne(req, res) {
 //METHOD deleteOne ---------------------------------------------- TODO!
 async function deleteOne(req, res) {
   try {
-    return res.status(200).json(await pizzaService.deteleById(req.params.id));
+    return res.status(200).json(await userService.deteleById(req.params.id));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });

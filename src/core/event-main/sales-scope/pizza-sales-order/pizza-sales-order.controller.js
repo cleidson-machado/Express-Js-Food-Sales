@@ -1,57 +1,65 @@
-const pizzaService = require("./pizza.services");
+const pizzaSalesOrderService = require("./pizza-sales-order.services");
 
-//METHOD findAll ------------------------------------------------ TODO!
+//METHOD findAllPizzaSalesOrders ----------------------------------------------- TODO!
 async function findAll(req, res) {
   try {
-    return res.status(200).json(await pizzaService.findAll());
+    return res.status(200).json(await pizzaSalesOrderService.findAll());
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
   }
 }
 
-//METHOD findById ----------------------------------------------- TODO!
+//METHOD findPizzaSalesOrderById ----------------------------------------------- TODO!
 async function findById(req, res) {
   try {
-    return res.status(200).json(await pizzaService.findById(req.params.id));
+    return res
+      .status(200)
+      .json(await pizzaSalesOrderService.findById(req.params.id));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
   }
 }
 
-//METHOD createOne ---------------------------------------------- TODO!
+//METHOD createPizzaSalesOrder ----------------------------------------------- TODO!
 async function createOne(req, res) {
   try {
-    const pizzaData = {
-      ...req.body,
-    };
-    return res.status(200).json(await pizzaService.create(pizzaData));
-  } catch (err) {
-    console.log(`Error MSN: ` + err);
-    res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
-  }
-}
-
-//METHOD updateOne ---------------------------------------------- TODO!
-async function updateOne(req, res) {
-  try {
-    const pizzaData = {
+    const pizzaSaleData = {
       ...req.body,
     };
     return res
       .status(200)
-      .json(await pizzaService.updateById(req.params.id, pizzaData));
+      .json(await pizzaSalesOrderService.create(pizzaSaleData));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
   }
 }
 
-//METHOD deleteOne ---------------------------------------------- TODO!
+//METHOD updatePizzaSalesOrderById ----------------------------------------------- TODO!
+async function updateOne(req, res) {
+  try {
+    const pizzaSaleData = {
+      ...req.body,
+    };
+    return res
+      .status(200)
+      .json(
+        await pizzaSalesOrderService.updateById(req.params.id, pizzaSaleData)
+      );
+  } catch (err) {
+    console.log(`Error MSN: ` + err);
+    res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
+  }
+}
+
+//METHOD detelePizzaSalesOrderById ----------------------------------------------- TODO!
 async function deleteOne(req, res) {
   try {
-    return res.status(200).json(await pizzaService.deteleById(req.params.id));
+    return res
+      .status(200)
+      .json(await pizzaSalesOrderService.deteleById(req.params.id));
   } catch (err) {
     console.log(`Error MSN: ` + err);
     res.status(500).json({ message: `An Error Has Occurred:  ${err}` });
