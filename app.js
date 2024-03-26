@@ -1,5 +1,6 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 const mongoConnDb = require("./src/database/mongoConnection");
 const morgan = require("morgan");
 const app = express();
@@ -15,6 +16,14 @@ const swaggerDocument = require("./src/swagger-output.json"); //## HERE! AUTO GE
 const port = 3000;
 
 app.use(express.json());
+
+//## CORS for Security Layer
+app.use(
+  cors({
+    origin: "localhost:3000",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  })
+);
 
 app.use(morgan("dev"));
 
