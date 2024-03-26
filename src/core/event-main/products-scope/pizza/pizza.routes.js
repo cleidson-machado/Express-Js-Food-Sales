@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const pizzaControllers = require("./pizza.controllers");
+const userAuthMiddleWare = require("../../../event-login/registration-scope/user-auth/user-auth.middleware");
 
-router.get("/find", pizzaControllers.findAll);
-router.get("/find/:id", pizzaControllers.findById);
-router.post("/create", pizzaControllers.createOne);
-router.put("/update/:id", pizzaControllers.updateOne);
-router.delete("/delete/:id", pizzaControllers.deleteOne);
+router.get("/find", userAuthMiddleWare, pizzaControllers.findAll);
+router.get("/find/:id", userAuthMiddleWare, pizzaControllers.findById);
+router.post("/create", userAuthMiddleWare, pizzaControllers.createOne);
+router.put("/update/:id", userAuthMiddleWare, pizzaControllers.updateOne);
+router.delete("/delete/:id", userAuthMiddleWare, pizzaControllers.deleteOne);
 
 module.exports = router;

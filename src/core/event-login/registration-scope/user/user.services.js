@@ -1,13 +1,18 @@
 const UserSchema = require("./user.schema");
 
 //METHOD findAllPizzas ----------------------------------------------- TODO!
-function findAll() {
-  return UserSchema.find();
+async function findAll() {
+  return await UserSchema.find();
 }
 
 //METHOD findPizzaById ----------------------------------------------- TODO!
 function findById(id) {
   return UserSchema.findById(id);
+}
+
+//METHOD findByIdForMiddleWare ----------------------------------------------- TODO!
+async function findByIdForMiddleWare(id) {
+  return await UserSchema.findById(id);
 }
 
 //METHOD createPizza ------------------------------------------------ TODO!
@@ -28,6 +33,7 @@ function deteleById(id) {
 module.exports = {
   findAll,
   findById,
+  findByIdForMiddleWare,
   create,
   updateById,
   deteleById,

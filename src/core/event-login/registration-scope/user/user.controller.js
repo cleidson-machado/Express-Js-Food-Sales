@@ -1,4 +1,5 @@
 const userService = require("./user.services");
+const { setHashToPassWd } = require("../user-auth/user-auth.services");
 
 //METHOD findAll ------------------------------------------------ TODO!
 async function findAll(req, res) {
@@ -22,10 +23,15 @@ async function findById(req, res) {
 
 //METHOD createOne ---------------------------------------------- TODO!
 async function createOne(req, res) {
+  const _password = await setHashToPassWd(req.body.password);
+
+  req.body.password = _password;
+
   try {
     const userData = {
       ...req.body,
     };
+
     return res.status(200).json(await userService.create(userData));
   } catch (err) {
     console.log(`Error MSN: ` + err);
