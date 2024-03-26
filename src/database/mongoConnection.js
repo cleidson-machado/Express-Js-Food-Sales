@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 async function mongoConnDb() {
-  let URI_CONN_STRING =
-    "mongodb://root:passWd123@localhost:27017/food-sales?authSource=admin";
+  "mongodb://root:passWd123@localhost:27017/food-sales?authSource=admin";
   await mongoose
-    .connect(URI_CONN_STRING, {})
+    .connect(process.env.URIDATABASE, {})
     .then(() => {
       console.log("MONGO DB CONECTED!");
     })
